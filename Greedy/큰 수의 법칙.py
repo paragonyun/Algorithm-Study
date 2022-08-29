@@ -28,3 +28,4 @@ while M > 0 :
 
 print(result)
 
+# 종료 시간 : 10:50
