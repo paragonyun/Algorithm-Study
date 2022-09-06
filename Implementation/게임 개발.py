@@ -29,96 +29,96 @@ N x M 크기의 직사각형으로 각각의 칸은 육지 혹은 바다이다.
 ## 종료시간 : 실패
 
 
-# N, M = map(int, input().split())
-# x, y, heads = map(int, input().split())
+N, M = map(int, input().split())
+x, y, heads = map(int, input().split())
 
-# loc = []
-# for i in range(N) :
-#     locs = list(input().split())
-#     loc.append(locs)
-
-
-# now = loc[x][y]
+loc = []
+for i in range(N) :
+    locs = list(input().split())
+    loc.append(locs)
 
 
-# ## 방문 했던 곳을 저장하는 list
-# xsys = [(x,y)]
+now = loc[x][y]
 
 
-# ## 왼쪽을 도는 행위를 이러면 다 짜야하니까 함수를 아예 만드는 게 좋을 거 같음
-# def turn() :
-#     global heads
+## 방문 했던 곳을 저장하는 list
+xsys = [(x,y)]
 
-#     heads -= 1 # 점점 작아져야 왼쪽으로 돎
-#     if heads == -1 :
-#         heads = 3 # 0다음엔 서쪽인 3이 와야함   
 
-# cnt = 1
-# go_back = 0
+## 왼쪽을 도는 행위를 이러면 다 짜야하니까 함수를 아예 만드는 게 좋을 거 같음
+def turn() :
+    global heads
 
-# while True :
-#     if go_back == 4 : ## 네 방향 다 돌았으면
-#         '''
-#         여기서 time over
-#         '''
+    heads -= 1 # 점점 작아져야 왼쪽으로 돎
+    if heads == -1 :
+        heads = 3 # 0다음엔 서쪽인 3이 와야함   
+
+cnt = 1
+go_back = 0
+
+while True :
+    if go_back == 4 : ## 네 방향 다 돌았으면
+        '''
+        여기서 time over
+        '''
     
-#     turn() ## 왼쪽을 봄
+    turn() ## 왼쪽을 봄
 
-#     if heads == 0 : # 왼쪽을 바라본 게 북쪽이면
-#         x_ = x - 1
-#         will_be = (x_, y)
-#         if (will_be in xsys) or (loc[x_][y] == 1) : ## 가봤거나 바다면
-#             go_back += 1
-#             continue ## 처음으로 돌아감 = 한번 더 돌게됨
+    if heads == 0 : # 왼쪽을 바라본 게 북쪽이면
+        x_ = x - 1
+        will_be = (x_, y)
+        if (will_be in xsys) or (loc[x_][y] == 1) : ## 가봤거나 바다면
+            go_back += 1
+            continue ## 처음으로 돌아감 = 한번 더 돌게됨
 
-#         else : ## 안 가봤고, 육지면
-#             here = will_be
-#             go_back = 0
-#             cnt += 1
-#             continue
+        else : ## 안 가봤고, 육지면
+            here = will_be
+            go_back = 0
+            cnt += 1
+            continue
 
     
 
-#     elif heads == 1 : # 왼쪽을 바라본 게 동쪽이면
-#         y_ = y + 1
-#         will_be = (x, y_)
-#         if (will_be in xsys) or (loc[x][y_] == 1) :
-#             go_back += 1
-#             continue
+    elif heads == 1 : # 왼쪽을 바라본 게 동쪽이면
+        y_ = y + 1
+        will_be = (x, y_)
+        if (will_be in xsys) or (loc[x][y_] == 1) :
+            go_back += 1
+            continue
 
-#         else : ## 안 가봤고, 육지면
-#             here = will_be
-#             go_back = 0
-#             cnt += 1
-#             continue
-
-
-#     elif heads == 2 :
-#         x_ = x + 1
-#         will_be = (x_, y)
-#         if (will_be in xsys) or (loc[x_][y] == 1) : ## 가봤거나 바다면
-#             go_back += 1
-#             continue
-
-#         else : ## 안 가봤고, 육지면
-#             here = will_be
-#             go_back = 0
-#             cnt += 1
-#             continue
+        else : ## 안 가봤고, 육지면
+            here = will_be
+            go_back = 0
+            cnt += 1
+            continue
 
 
-#     elif heads == 3 :
-#         y_ = y-1
-#         will_be = (x, y_)
-#         if (will_be in xsys) or (loc[x][y_] == 1) :
-#             go_back += 1
-#             continue
+    elif heads == 2 :
+        x_ = x + 1
+        will_be = (x_, y)
+        if (will_be in xsys) or (loc[x_][y] == 1) : ## 가봤거나 바다면
+            go_back += 1
+            continue
+
+        else : ## 안 가봤고, 육지면
+            here = will_be
+            go_back = 0
+            cnt += 1
+            continue
+
+
+    elif heads == 3 :
+        y_ = y-1
+        will_be = (x, y_)
+        if (will_be in xsys) or (loc[x][y_] == 1) :
+            go_back += 1
+            continue
     
-#         else : ## 안 가봤고, 육지면
-#             here = will_be
-#             go_back = 0
-#             cnt += 1
-#             continue
+        else : ## 안 가봤고, 육지면
+            here = will_be
+            go_back = 0
+            cnt += 1
+            continue
     
 
 
